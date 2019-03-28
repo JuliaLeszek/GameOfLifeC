@@ -3,4 +3,4 @@ project(GameOfLife C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(GameOfLife main.c rules.c rules.h cell.c cell.h)
+add_executable(GameOfLife main.c rules.c rules.h cell.c cell.h generation.c generation.h)
