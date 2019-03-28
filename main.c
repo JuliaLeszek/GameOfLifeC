@@ -5,11 +5,11 @@
 
 
 int main() {
+    cell_t c;
+    change_state ( &c, rules ( 3, DEAD));
+    printf("c = %d\n", c.state);
 
-    cell_st a = rules ( 3, DEAD);
-    printf("a = %d\n", a);
 
-
-    return 0; //hurray
+    return 0;
 }
 

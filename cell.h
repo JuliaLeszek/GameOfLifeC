@@ -13,5 +13,7 @@ typedef struct {
     cell_st state;
 } cell_t;
 
+void change_state (cell_t *cell, cell_st new_state);
+
 
 #endif //GAMEOFLIFE_CELL_H
