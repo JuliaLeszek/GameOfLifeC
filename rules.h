@@ -7,7 +7,7 @@
 
 #include "cell.h"
 
-cell_st rules ( int alive_neighbour_count, cell_st previous_state);
+cell_st rules (int alive_neighbour_count, cell_st previous_state);
 
 
 #endif //GAMEOFLIFE_RULES_H

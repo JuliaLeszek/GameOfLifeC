@@ -9,3 +9,6 @@ void change_state (cell_t *cell, cell_st new_state){
     cell -> state = new_state;
 }
 
+cell_st get_state (cell_t *cell){
+    return cell->state;
+}
