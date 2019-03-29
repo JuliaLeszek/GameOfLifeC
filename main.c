@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include "cell.h"
 #include "rules.h"
-
+#include "generation.h"
 
 
 int main() {
-    cell_t c;
-    change_state ( &c, rules ( 3, DEAD));
-    printf("c = %d\n", c.state);
 
+    generation_t* p = create_generation( 100, 100);
+    cell_t *c = cell(p, 10, 7);
+    change_state ( c, rules ( 3, ALIVE));
+    printf("c = %d\n", (int) c->state);
+    free_gen(p);
 
     return 0;
 }

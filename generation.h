@@ -16,4 +16,8 @@ typedef struct {
 
 generation_t *create_generation( int height, int width);
 
+cell_t *cell(generation_t *grid, int i, int j);
+
+void free_gen (generation_t *grid);
+
 #endif //GAMEOFLIFE_GENERATION_H

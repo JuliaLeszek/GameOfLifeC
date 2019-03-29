@@ -6,7 +6,7 @@
 #include "generation.h"
 
 
-// space for the generation_t
+// pointer and space for the generation_t
 generation_t *create_generation( int height, int width){
     generation_t *new_gen = (generation_t*) malloc(sizeof(generation_t));
     if (!new_gen){
@@ -22,4 +22,21 @@ generation_t *create_generation( int height, int width){
     new_gen->height = height;
 
     return new_gen;
+}
+
+
+// pointer for the single cell
+
+cell_t *cell(generation_t *grid, int i, int j){
+    if((i >= 0 && i <= grid->height) && (j >= 0 && j <= grid->width)){
+        return grid->generation + i*grid->width + j;
+    } return NULL;
+}
+
+
+
+// memory management
+
+void free_gen (generation_t *grid){
+    free(grid);
 }
