@@ -3,6 +3,8 @@
 //
 
 #include <stdlib.h>
+#include <bits/types/FILE.h>
+#include <stdio.h>
 #include "generation.h"
 #include "rules.h"
 #include "neighbourhood.h"
@@ -15,7 +17,7 @@ generation_t *create_generation( int height, int width){
         return NULL;
     }
 
-    new_gen->generation = (cell_t*) calloc((height*width), sizeof(cell_t)); //
+    new_gen->generation = (cell_t*) calloc(((size_t)(height*width)), sizeof(cell_t));
     if (!(new_gen->generation)){
         free(new_gen);
         return NULL;
@@ -46,7 +48,29 @@ void next_generation (generation_t *current, generation_t *new){
     }
 }
 
+// creating initial generation from file
 
+generation_t *load_file (FILE *file_in){
+    int i, j, m, n;
+    if (fscanf(file_in, "%d %d", &m, &n) != 2){
+        return NULL;
+    }
+    generation_t *new = create_generation(m, n);
+
+    while (fscanf(file_in, "%d %d", &i, &j) == 2){
+
+        if (i > 0 && i <= m && j > 0 && j <= n ) {
+            if ((get_state(cell(new, i, j))) != ALIVE) {
+
+                change_state(cell(new, i, j), ALIVE);
+            } else {
+                printf("Cell with these coordinates was already alive: %d, %d\n, skipping line", i, j);
+            }
+        }
+    }
+
+    return new;
+}
 
 // memory management
 

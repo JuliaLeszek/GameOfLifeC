@@ -5,27 +5,34 @@
 #include "neighbourhood.h"
 
 
-int main() {
+int main(int argc, char **argv) {
+
     // creating the next generation-- test on one cell
-    generation_t* p = create_generation( 100, 100);
-    cell_t *c = cell (p, 10, 7);
-    cell_t *d = cell (p, 10, 8);
-    cell_t *e = cell (p, 10, 9);
-    change_state (c, rules ( 3, get_state(c)));
-    change_state (d, rules ( 3, get_state(c)));
-    change_state (e, rules ( 3, get_state(c)));
+
+    FILE *file_in;
+    file_in = fopen("immortal.txt", "r");
+    if (file_in == NULL){
+        printf("bon iver");
+        return 0;
+    }
 
 
-    generation_t* n = create_generation( 100, 100);
-    next_generation(p, n);
-    cell_t *check = cell (n, 9, 8);
+    generation_t* p = load_file(file_in);
+    cell_t *a= cell (p, 50, 62);
+    cell_t *b = cell (p, 50, 63);
+    cell_t *c= cell (p, 50, 64);
+
+    printf("a's cell state = %d\n", (int) a->state);
+    printf("b's cell state = %d\n", (int) b->state);
+    printf("c's cell state = %d\n", (int) c->state);
+
+//    generation_t* n;
+//    cell_t *check = cell (n, 9, 8);
+//    printf("check's cell state = %d\n", (int) check->state);
+//    next_generation(p, n);
 
 
-    printf("c = %d\n", (int) c->state);
-    printf("d = %d\n", (int) d->state);
-    printf("e = %d\n", (int) e->state);
-
-    printf("check's cell state = %d\n", (int) check->state);
+//    printf("check's cell state = %d\n", (int) check->state);
 
     free_gen(p);
 
