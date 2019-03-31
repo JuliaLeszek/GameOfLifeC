@@ -1,40 +1,66 @@
 #include <stdio.h>
+#include <memory.h>
+#include <stdlib.h>
 #include "cell.h"
 #include "rules.h"
 #include "generation.h"
 #include "neighbourhood.h"
 
 
-int main(int argc, char **argv) {
 
-    // creating the next generation-- test on one cell
+int main(int argc, char **argv){ // wskaźnik na wskażnik na literę
+
+    // argument handling
 
     FILE *file_in;
-    file_in = fopen("immortal.txt", "r");
+    int n;
+
+    if (argc > 2 && !strcmp(argv[1], "-f")){
+        file_in = fopen(argv[2], "r");
+    } else {
+        file_in = fopen("immortal.txt", "r");
+        printf ("Couldn't open file. Opening default configuration file.");
+    }
+
     if (file_in == NULL){
-        printf("bon iver");
+        printf ("Could not open file. Terminating.");
         return 0;
     }
 
+    if (argc > 4 && !strcmp(argv[3], "-n")){
+        n = atoi(argv[4]);
+        if (n < 0){
+            printf ("Number of iterations must be positive. Terminating.");
+            return 0;
+            }
+    } else {
+        printf ("Number of iterations needed. Terminating.");
+        return 0;
+    }
 
-    generation_t* p = load_file(file_in);
-    cell_t *a= cell (p, 50, 62);
-    cell_t *b = cell (p, 50, 63);
-    cell_t *c= cell (p, 50, 64);
-
-    printf("a's cell state = %d\n", (int) a->state);
-    printf("b's cell state = %d\n", (int) b->state);
-    printf("c's cell state = %d\n", (int) c->state);
-
-//    generation_t* n;
-//    cell_t *check = cell (n, 9, 8);
-//    printf("check's cell state = %d\n", (int) check->state);
-//    next_generation(p, n);
+//    if (argc > 6 && !strcmp(argv[5], "-g")){
+//                                                      // miejsce na flagę generowania plikow png
+//    } else {
+//        printf ("Number of iterations needed. Terminating.");
+//        return 0;
+//    }
 
 
-//    printf("check's cell state = %d\n", (int) check->state);
+    // creating next generations
 
-    free_gen(p);
+    generation_t *current = load_file (file_in);
+    generation_t *new = create_generation (current->height, current->width);
+
+    for (int i = 0; i < n; i++){
+        next_generation (current, new);
+        printf ("check %d\n", i);
+        copy_generation (current, new);
+    }
+
+
+
+    free_gen(new);
+    free_gen(current);
 
     return 0;
 }

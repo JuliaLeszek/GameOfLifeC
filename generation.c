@@ -72,6 +72,18 @@ generation_t *load_file (FILE *file_in){
     return new;
 }
 
+// rewriting generation from new to current
+
+void copy_generation (generation_t *current, generation_t *new){
+    for (int i = 0; i < current->height; i++){
+        for (int j = 0; j < current->width; j++){
+            change_state(cell(current, i, j), get_state(cell(new, i, j)));
+        }
+    }
+}
+
+
+
 // memory management
 
 void free_gen (generation_t *grid){
