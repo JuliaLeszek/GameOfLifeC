@@ -39,7 +39,7 @@ int main(int argc, char **argv){ // wskaźnik na wskażnik na literę
     }
 
 //    if (argc > 6 && !strcmp(argv[5], "-g")){
-//                                                      // miejsce na flagę generowania plikow png
+//                                                      // miejsce na flagę generowania plikow .png
 //    } else {
 //        printf ("Number of iterations needed. Terminating.");
 //        return 0;
