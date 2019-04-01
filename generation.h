@@ -21,10 +21,6 @@ cell_t *cell(generation_t *grid, int i, int j);
 
 void next_generation (generation_t *current, generation_t *new);
 
-generation_t *load_file (FILE *file_in);
-
-void copy_generation (generation_t *current, generation_t *new);
-
 void free_gen (generation_t *grid);
 
 #endif //GAMEOFLIFE_GENERATION_H

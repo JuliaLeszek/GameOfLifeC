@@ -3,7 +3,6 @@
 //
 
 #include <stdlib.h>
-#include <bits/types/FILE.h>
 #include <stdio.h>
 #include "generation.h"
 #include "rules.h"
@@ -44,40 +43,6 @@ void next_generation (generation_t *current, generation_t *new){
     for (i = 0; i < current->height; i++){
         for (j = 0; j < current->width; j++){
             change_state(cell(new, i, j), rules(alive_neighbour_count(current, i, j) , get_state(cell(current, i, j))));
-        }
-    }
-}
-
-// creating initial generation from file
-
-generation_t *load_file (FILE *file_in){
-    int i, j, m, n;
-    if (fscanf(file_in, "%d %d", &m, &n) != 2){
-        return NULL;
-    }
-    generation_t *new = create_generation(m, n);
-
-    while (fscanf(file_in, "%d %d", &i, &j) == 2){
-
-        if (i > 0 && i <= m && j > 0 && j <= n ) {
-            if ((get_state(cell(new, i, j))) != ALIVE) {
-
-                change_state(cell(new, i, j), ALIVE);
-            } else {
-                printf("Cell with these coordinates was already alive: %d, %d\n, skipping line", i, j);
-            }
-        }
-    }
-
-    return new;
-}
-
-// rewriting generation from new to current
-
-void copy_generation (generation_t *current, generation_t *new){
-    for (int i = 0; i < current->height; i++){
-        for (int j = 0; j < current->width; j++){
-            change_state(cell(current, i, j), get_state(cell(new, i, j)));
         }
     }
 }
