@@ -12,8 +12,10 @@
 arguments_t argument_handling(int argc, char **argv){
     int opt;
     arguments_t args;
+    args.save_txt = 0;
+    args.new_directory = "output";
 
-    while (( opt = getopt(argc, argv, "f:n:g")) != -1){
+    while (( opt = getopt(argc, argv, "f:n:g:s:")) != -1){
         switch(opt){
             case 'f':
                 args.file_in = fopen(optarg, "r");
@@ -34,6 +36,10 @@ arguments_t argument_handling(int argc, char **argv){
                 if (!args.does_generate){
                     args.does_generate = 1;
                 }
+                break;
+            case 's':
+                args.txt_file_name = optarg;
+                args.save_txt = 1;
                 break;
         }
     } return args;
