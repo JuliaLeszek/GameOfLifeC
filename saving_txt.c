@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 #include "saving_txt.h"
+#include <string.h>
+
 
 void save_to_txt(generation_t *board, char *file) {
     int i, j;
