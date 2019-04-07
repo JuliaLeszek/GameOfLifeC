@@ -9,6 +9,6 @@
 #include "generation.h"
 #include "cell.h"
 
-void save_to_png(generation_t *board, char *file);
+void save_to_png(generation_t *grid, char *file);
 
 #endif //GAMEOFLIFE_SAVING_PNG_H

@@ -11,8 +11,7 @@
 
 arguments_t argument_handling(int argc, char **argv){
     int opt;
-    arguments_t args;
-    args.save_txt = 0;
+    arguments_t args = {0,};
     args.new_directory = "output";
 
     while (( opt = getopt(argc, argv, "f:n:s:")) != -1){
@@ -29,7 +28,6 @@ arguments_t argument_handling(int argc, char **argv){
                 break;
             case 's':
                 args.txt_file_name = optarg;
-                args.save_txt = 1;
                 break;
         }
 
