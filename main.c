@@ -16,7 +16,7 @@
 int main(int argc, char **argv){
 
 
-    arguments_t args = argument_handling(argc, argv);
+    arguments_t args = arguments(argument_handling(argc, argv));
 
 
     // creating next generations
@@ -42,7 +42,7 @@ int main(int argc, char **argv){
         printf ("Created generation number %d\n", i);
 
         if (i == args.n && args.save_txt == 1) {
-            save_to_txt(new, args.txt_file_name);
+            save_to_txt(current, args.txt_file_name);
         }
 
         temporary = current;

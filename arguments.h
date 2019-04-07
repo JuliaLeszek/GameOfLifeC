@@ -19,4 +19,6 @@ typedef struct{
 
 arguments_t argument_handling(int argc, char **argv);
 
+arguments_t arguments(arguments_t args);
+
 #endif //GAMEOFLIFE_ARGUMENTS_H
