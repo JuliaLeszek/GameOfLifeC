@@ -10,10 +10,10 @@ int main ()
 
     cell_t test_cell;
     cell_t * p_test_cell = &test_cell;
-    p_test_cell->state = ALIVE;
+    test_cell.state = ALIVE;
 
-    change_state (p_test_cell, DEAD);
-    if (p_test_cell->state == ALIVE && (get_state(p_test_cell)) == ALIVE){
+    change_state (p_test_cell, ALIVE);
+    if (test_cell.state == DEAD && (get_state(p_test_cell)) == DEAD) {
         return 0;
-    }
+    } else return 1;
 }
