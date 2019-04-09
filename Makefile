@@ -5,6 +5,12 @@ GameOfLife: main.o arguments.o loading.o generation.o cell.o neighbourhood.o rul
 CellTest: CellTest.o cell.o
 	gcc CellTest.o cell.o -o CellTest
 
+RulesTest: RulesTest.o rules.o
+	gcc RulesTest.o rules.o -o RulesTest
+
+RulesTest.o: RulesTest.c
+	gcc -c RulesTest.c
+
 CellTest.o: CellTest.c
 	gcc -c CellTest.c
 
