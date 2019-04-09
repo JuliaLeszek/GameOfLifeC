@@ -2,6 +2,12 @@
 GameOfLife: main.o arguments.o loading.o generation.o cell.o neighbourhood.o rules.o saving_txt.o saving_png.o
 	gcc main.o arguments.o loading.o generation.o cell.o neighbourhood.o rules.o saving_txt.o saving_png.o -o GameOfLife -lpng
 
+CellTest: CellTest.o cell.o
+	gcc CellTest.o cell.o -o CellTest
+
+CellTest.o: CellTest.c
+	gcc -c CellTest.c
+
 main.o: main.c
 	gcc -c main.c -lpng
 
@@ -30,7 +36,7 @@ saving_png.o: saving_png.c saving_png.h
 	gcc -c saving_png.c -lpng
 
 clean:
-	rm *.o GameOfLife
+	rm *.o GameOfLife CellTest
 
 
 

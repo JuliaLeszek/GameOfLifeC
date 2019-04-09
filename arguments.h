@@ -11,7 +11,6 @@
 typedef struct{
     FILE *file_in;
     int n;
-    bool does_generate;
     char *txt_file_name;
     const char *new_directory;
 } arguments_t;

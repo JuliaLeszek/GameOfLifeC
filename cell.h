@@ -6,7 +6,7 @@
 #define GAMEOFLIFE_CELL_H
 
 typedef enum{
-    DEAD, ALIVE //  zmiana kolejności żeby 0 zonaczało DEAD
+    DEAD, ALIVE
 } cell_st;
 
 typedef struct {
