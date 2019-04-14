@@ -66,6 +66,7 @@ int main(int argc, char **argv){
 
     free_gen(new);
     free_gen(current);
+    free_gen(temporary);
 
     return 0;
 }

@@ -52,5 +52,6 @@ void next_generation (generation_t *current, generation_t *new){
 // memory management
 
 void free_gen (generation_t *grid){
+    free(grid->generation);
     free(grid);
 }
